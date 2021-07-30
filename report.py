@@ -7,6 +7,9 @@ import numpy as np
 from fpdf import FPDF
 import ctypes
 
+
+MessageBox = ctypes.windll.user32.MessageBoxW
+MessageBox(None, 'Welcome to Wisdom Tests Report Generation! Please click OK to start report generation', 'WISDOM TESTS', 0)
 #### opening excel sheet using sheet name and filename and openpyxl engine, because xldr is deprecated and older engine
 
 my_sheet = 'Sheet1' # change it to your sheet name, you can find your sheet name at the bottom left of your excel file
@@ -285,8 +288,9 @@ for k in final_info:
         final_incorrect[i-1]+=1
 
 #### CREATING REPORT PDF
-MessageBox = ctypes.windll.user32.MessageBoxW
 for k in final_info:
     create_analytics_report(k)
 
+    
+MessageBox = ctypes.windll.user32.MessageBoxW
 MessageBox(None, 'Reports generated and stored in Reports Folder', 'Reports Generated', 0)
